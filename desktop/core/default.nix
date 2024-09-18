@@ -1,3 +1,3 @@
 {
-  imports = [./audio.nix];
+  imports = [./audio.nix ./portable.nix];
 }
