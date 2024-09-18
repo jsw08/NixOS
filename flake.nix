@@ -6,7 +6,6 @@
       systems = ["x86_64-linux"];
       imports = [
         ./systems
-        # ./vm
       ];
 
       perSystem = {
@@ -37,10 +36,6 @@
 
     # Ricing
     stylix.url = "github:danth/stylix";
-    shyfox = {
-      url = "github:naezr/shyfox"; 
-      flake = false;
-    };
 
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";

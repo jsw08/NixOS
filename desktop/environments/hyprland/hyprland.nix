@@ -5,8 +5,14 @@
   ...
 }: let
   inherit (lib) mkOption types getExe getExe';
+  opt = lib.optionalString;
+  hm = config.home-manager.users.${usr};
+
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
+  
+  rofi = hm.programs.rofi.package;
+  firefox = hm.programs.firefox.package;
 in {
   options.desktop.hyprland.monitor = mkOption {
     type = types.listOf types.str;
@@ -41,8 +47,9 @@ in {
             [
               "$mod, Q, killactive,"
               "$mod SHIFT, E, exit"
-              "$mod, E, exec, ${getExe pkgs.rofi} -show run"
-              #"$mod, F, exec, firefox"
+              "$mod, D, exec, ${getExe rofi} -show drun"
+
+              (opt config.apps.firefox "$mod, F, exec, ${getExe firefox}")
               "$mod, RETURN, exec, ${getExe pkgs.kitty}"
             ]
             ++ (

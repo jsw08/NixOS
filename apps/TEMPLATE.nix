@@ -8,7 +8,7 @@
   usr = config.core.username;
 in {
   options.apps.APP = lib.mkOption {
-    type = lib.types.boolean;
+    type = lib.types.bool;
     default = true;
     example = false;
     description = "Wether to enable the APP.";

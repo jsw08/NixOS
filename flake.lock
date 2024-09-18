@@ -365,24 +365,7 @@
         "home-manager": "home-manager",
         "nixos-wsl": "nixos-wsl",
         "nixpkgs": "nixpkgs_2",
-        "shyfox": "shyfox",
         "stylix": "stylix"
-      }
-    },
-    "shyfox": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1724338607,
-        "narHash": "sha256-w4kaOjz51FYYS58TrPVI/OgZ8At9mbPXj2G3X/N7Lu8=",
-        "owner": "naezr",
-        "repo": "shyfox",
-        "rev": "bd41f885f19771b12e23c522ccaafe33af59a1c7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "naezr",
-        "repo": "shyfox",
-        "type": "github"
       }
     },
     "stylix": {

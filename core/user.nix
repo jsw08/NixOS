@@ -29,6 +29,7 @@ in {
       extraSpecialArgs = {
         inherit inputs outputs;
       };
+
       users.${username} = {
         home = {
           inherit username;
