@@ -6,5 +6,5 @@
     bluetooth = true;
   };
 
-  desktop.type = "kde";
+  desktop.type = "hyprland";
 }

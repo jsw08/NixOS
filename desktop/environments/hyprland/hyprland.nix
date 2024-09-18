@@ -20,7 +20,7 @@ in
     '';
   };
   config = {
-    programs.hyprland.enable = true;
+    programs.hyprland.enable = cfg;
     home-manager.users.${usr} = {
       wayland.windowManager.hyprland = {
         enable = cfg;
