@@ -28,6 +28,9 @@ in {
   config = {
     programs.hyprland.enable = cfg;
     home-manager.users.${usr} = {
+      home.packages = [
+        pkgs.wl-clipboard
+      ];
       wayland.windowManager.hyprland = {
         enable = cfg;
         settings = {
@@ -119,7 +122,7 @@ in {
               ", Print, exec, ${exe pkgs.grimblast} copy area"
               "$mod, D, exec, ${exe rofi} -show drun"
               "$mod, RETURN, exec, ${exe terminal}"
-              (opt config.apps.firefox "$mod SHIFT, RETURN, exec, ${exe firefox}")
+              "$mod SHIFT, RETURN, exec, ${exe firefox}"
 
               "$mod, a, exec, ${exe terminal} ${exe pkgs.pulsemixer}"
               "$mod, n, exec, ${exe terminal} ${pkgs.networkmanager}/bin/nmtui"

@@ -14,7 +14,7 @@ in {
   #   description = "Wether to enable the APP.";
   # };
 
-  config.home-manager.users.${usr}.programs.kitty = {
+  home-manager.users.${usr}.programs.kitty = {
     enable = cfg;
   };
 }
