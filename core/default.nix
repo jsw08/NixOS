@@ -8,5 +8,6 @@
     ./nix.nix
     ./security.nix
     ./user.nix
+    ./vm.nix
   ];
 }
