@@ -50,9 +50,10 @@ in {
         ++ [
           {
             networking.hostName = "vm";
-            core.username = "user";
             nixpkgs.hostPlatform = pkgs.system;
 
+            core.username = "user";
+            core.boot.animation = true;
             desktop.type = "hyprland";
           }
         ];
