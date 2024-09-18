@@ -8,7 +8,7 @@ let
   cfg = config.core.bluetooth;
 in
 {
-  options.config.bluetooth = lib.mkEnableOption "enable bluetooth support.";
+  options.core.bluetooth = lib.mkEnableOption "enable bluetooth support.";
   config = lib.mkIf cfg {
     hardware.bluetooth = {
       enable = true;

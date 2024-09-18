@@ -14,7 +14,8 @@ in
   };
   imports = [
     ./gnome
-    ./kde
     ./hyprland
+    ./kde
+    ./theme
   ];
 }

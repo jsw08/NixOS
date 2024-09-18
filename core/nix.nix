@@ -1,4 +1,11 @@
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
+{
   nixpkgs.config.allowUnfree = true;
   nix = {
     # This will add each flake input as a registry
@@ -18,6 +25,10 @@
       warn-dirty = false;
     };
   };
+  
+  # You need git for flakes.
+  environment.systemPackages = [pkgs.git];
+  
   system.autoUpgrade = {
     enable = true;
     flake = "github:jsw08/NixOS";

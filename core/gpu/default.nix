@@ -1,7 +1,7 @@
 { config, lib, ... }:
 {
   imports = [
-    ./amd.nxi
+    ./amd.nix
     # ./intel.nix
     # ./nvidia.nix
   ];

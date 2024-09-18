@@ -1,3 +1,4 @@
+{ config, pkgs, ... }:
 {
   boot = {
     loader = {
@@ -5,6 +6,6 @@
       efi.canTouchEfiVariables = true;
     };
     kernelPackages = pkgs.linuxPackages_latest;
-    cleanTmpDir = true;
+    tmp.cleanOnBoot = true;
   };
 }

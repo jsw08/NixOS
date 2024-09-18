@@ -20,6 +20,7 @@ in
     users.users.${username} = {
       isNormalUser = true;
       description = "Main user";
+      initialPassword = "changeme";
       extraGroups = [
         "networkmanager"
         "wheel"
@@ -40,7 +41,7 @@ in
         systemd.user.startServices = "sd-switch";
 
         programs.home-manager.enable = true;
-        home.stateVersion = system.stateVersion;
+        home.stateVersion = config.system.stateVersion;
       };
     };
   };

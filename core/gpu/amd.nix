@@ -8,7 +8,7 @@ let
   cfg = config.core.gpu;
 in
 {
-  config = mkIf (builtins.elem cfg [ "amd" ]) {
+  config = lib.mkIf (cfg == "amd") {
     # checkout github:notashelf/nyx!
     # enable amdgpu xorg drivers in case Hyprland breaks again
     services.xserver.videoDrivers = lib.mkDefault [

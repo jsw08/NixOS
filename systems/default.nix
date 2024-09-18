@@ -1,6 +1,7 @@
 {
   config,
   specialArgs,
+  ...
 }:
 let
   hostname = specialArgs.hostname;
