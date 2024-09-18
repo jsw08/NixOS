@@ -1,16 +1,36 @@
 {
-  config,
-  specialArgs,
+  self,
+  inputs,
+  lib,
   ...
-}:
-let
-  hostname = specialArgs.hostname;
-in
-{
-  imports = [
-    ./${hostname}
-    ../core
-  ];
+}: {
+  flake.nixosConfigurations = let
+    inherit (inputs.nixpkgs.lib) nixosSystem genAttrs;
+    inherit (inputs) home-manager stylix;
 
-  networking.hostName = hostname;
+    specialArgs = {inherit inputs self;};
+    modules = [
+      home-manager.nixosModules.home-manager
+      stylix.nixosModules.stylix
+
+      ../apps
+      ../core
+      ../desktop
+    ];
+    systems = [
+      "desktop"
+      "wsl"
+    ];
+  in (genAttrs systems (hostName:
+    nixosSystem {
+      inherit specialArgs;
+      modules =
+        modules
+        ++ [
+          {
+            imports = [./${hostName}];
+            networking = {inherit hostName;};
+          }
+        ];
+    }));
 }

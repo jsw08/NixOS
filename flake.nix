@@ -1,11 +1,37 @@
 {
   description = "Nix is here, nix is everywhere, nix is everything.";
 
-  inputs = {
-    # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small"; # build error unrelated to config.
+  outputs = inputs:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux"];
+      imports = [
+        ./systems
+        # ./vm
+      ];
 
-    # Home manager
+      perSystem = {
+        config,
+        pkgs,
+        ...
+      }: {
+        devShells.default = pkgs.mkShell {
+          packages = [
+            pkgs.alejandra
+            pkgs.git
+          ];
+          name = "dots";
+          DIRENV_LOG_FORMAT = "";
+        };
+
+        formatter = pkgs.alejandra;
+      };
+    };
+
+  inputs = {
+    # Nixpkgs and other core shit
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable-small"; # build error unrelated to config.
+    flake-parts.url = "github:hercules-ci/flake-parts";
+
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -15,44 +41,4 @@
     # WSL
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
-
-  outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-      inherit (self) outputs;
-
-      modules_paths = [
-        home-manager.nixosModules.home-manager
-        inputs.stylix.nixosModules.stylix
-        ./systems
-        ./apps
-        ./desktop
-      ];
-
-    in
-    {
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            hostname = "desktop";
-          };
-          modules = modules_paths;
-        };
-        wsl = nixpkgs.lib.nixosSystem {
-          specialArgs = {
-            inherit inputs outputs;
-            hostname = "wsl";
-          };
-          modules = modules_paths ++ [ inputs.nixos-wsl.nixosModules.default ];
-        };
-      };
-
-      formatter.x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.nixfmt-rfc-style;
-    };
 }

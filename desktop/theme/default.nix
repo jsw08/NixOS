@@ -4,11 +4,9 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   cfg = config.desktop.type != "none";
-in
-{
+in {
   stylix = {
     enable = true;
     polarity = "dark";
@@ -17,7 +15,10 @@ in
       package = pkgs.bibata-cursors;
       name = "Bibata-Modern-Ice";
       size = 21;
-    };   
+    };
+    fonts.monospace = {
+      name = "DejaVuSansMNerdFontMono-Regular";
+      package = pkgs.nerdfonts.override {fonts = ["DejaVuSansMono"];};
+    };
   };
-  
 }

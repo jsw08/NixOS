@@ -4,13 +4,12 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   nixpkgs.config.allowUnfree = true;
   nix = {
     # This will add each flake input as a registry
     # To make nix3 commands consistent with your flake
-    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    registry = lib.mapAttrs (_: value: {flake = value;}) inputs;
 
     # This will additionally add your inputs to the system's legacy channels
     # Making legacy nix commands consistent as well, awesome!
@@ -25,10 +24,10 @@
       warn-dirty = false;
     };
   };
-  
+
   # You need git for flakes.
   environment.systemPackages = [pkgs.git];
-  
+
   system.autoUpgrade = {
     enable = true;
     flake = "github:jsw08/NixOS";

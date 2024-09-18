@@ -5,11 +5,9 @@
   inputs,
   outputs,
   ...
-}:
-let
+}: let
   username = config.core.username;
-in
-{
+in {
   options.core.username = lib.mkOption {
     type = lib.types.str;
     default = "jsw";

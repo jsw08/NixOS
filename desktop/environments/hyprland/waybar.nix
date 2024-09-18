@@ -1,7 +1,11 @@
-{config, lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   cfg = config.desktop.type == "hyprland";
   usr = config.core.username;
-in { 
+in {
   home-manager.users.${usr}.programs.waybar = {
     enable = cfg;
     systemd = {

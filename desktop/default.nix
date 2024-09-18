@@ -1,8 +1,10 @@
-{ config, lib, ... }:
-let
-  cfg = config.desktop.type;
-in
 {
+  config,
+  lib,
+  ...
+}: let
+  cfg = config.desktop.type;
+in {
   imports = [
     ./core
     ./environments

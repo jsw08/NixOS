@@ -3,11 +3,9 @@
   lib,
   pkgs,
   ...
-}:
-let
+}: let
   cfg = config.core.gpu;
-in
-{
+in {
   config = lib.mkIf (cfg == "amd") {
     # checkout github:notashelf/nyx!
     # enable amdgpu xorg drivers in case Hyprland breaks again
@@ -18,16 +16,15 @@ in
 
     # enable amdgpu kernel module
     boot = {
-      initrd.kernelModules = [ "amdgpu" ]; # load amdgpu kernel module as early as initrd
-      kernelModules = [ "amdgpu" ]; # if loading somehow fails during initrd but the boot continues, try again later
+      initrd.kernelModules = ["amdgpu"]; # load amdgpu kernel module as early as initrd
+      kernelModules = ["amdgpu"]; # if loading somehow fails during initrd but the boot continues, try again later
     };
 
-    environment.systemPackages = [ pkgs.nvtopPackages.amd ];
+    environment.systemPackages = [pkgs.nvtopPackages.amd];
 
     # enables AMDVLK & OpenCL support
     hardware.graphics = {
-      extraPackages =
-        with pkgs;
+      extraPackages = with pkgs;
         [
           amdvlk
 
@@ -43,21 +40,20 @@ in
         ++ (
           # this is a backwards-compatible way of loading appropriate opencl packages
           # in case the host runs an older revision of nixpkgs
-          if pkgs ? rocmPackages.clr then
-            with pkgs.rocmPackages;
-            [
+          if pkgs ? rocmPackages.clr
+          then
+            with pkgs.rocmPackages; [
               clr
               clr.icd
             ]
           else
-            with pkgs;
-            [
+            with pkgs; [
               rocm-opencl-icd
               rocm-opencl-runtime
             ]
         );
 
-      extraPackages32 = [ pkgs.driversi686Linux.amdvlk ];
+      extraPackages32 = [pkgs.driversi686Linux.amdvlk];
     };
   };
 }

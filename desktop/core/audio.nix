@@ -3,11 +3,9 @@
   pkgs,
   lib,
   ...
-}:
-let
+}: let
   cfg = config.desktop.type != "none";
-in
-{
+in {
   config = lib.mkIf cfg {
     services.pipewire = {
       enable = true;
