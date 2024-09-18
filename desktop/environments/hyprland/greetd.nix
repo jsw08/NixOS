@@ -8,7 +8,7 @@
   cmd = "Hyprland";
   greeting = "";
 
-  greeter = "${lib.getExe pkgs.greetd.tuigreet} --user-menu -r -t -g '${greeting}' -c ${cmd}";
+  greeter = "${lib.getExe pkgs.greetd.tuigreet} --user-menu -r -t --power-reboot 'systemctl reboot --firmware' -g '${greeting}' -c ${cmd}";
   cfg = config.desktop.type == "hyprland";
 in {
   services.greetd = {
