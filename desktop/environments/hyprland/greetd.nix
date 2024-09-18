@@ -9,9 +9,10 @@
   greeting = "";
 
   greeter = "${lib.getExe pkgs.greetd.tuigreet} --user-menu -r -t -g '${greeting}' -c ${cmd}";
+  cfg = config.desktop.type == "hyprland";
 in {
   services.greetd = {
-    enable = true;
+    enable = cfg;
     settings = {
       default_session.command = greeter;
       initial_session = {

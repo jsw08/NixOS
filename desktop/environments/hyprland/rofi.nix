@@ -9,23 +9,24 @@
     _type = "literal";
     inherit value;
   };
+  cfg = config.desktop.type == "hyprland";
 in {
   home-manager.users.${usr}.programs.rofi = {
-    enable = true;
+    enable = cfg;
     cycle = true;
     package = pkgs.rofi-wayland;
     terminal = "${lib.getBin pkgs.kitty}";
     theme = {
       window = {
         location = mkLiteral "center";
-        anchor = mkLiteral "  center";
+        anchor = mkLiteral "center";
         transparency = "screenshot";
         padding = mkLiteral "10px";
-        border = mkLiteral " 0px";
+        border = mkLiteral "0px";
         border-radius = mkLiteral "6px";
 
         spacing = 0;
-        children = mkLiteral " [mainbox]";
+        children = mkLiteral "[mainbox]";
         orientation = mkLiteral "horizontal";
       };
 
