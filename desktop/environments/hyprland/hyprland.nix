@@ -25,7 +25,7 @@ in {
         settings = {
           inherit (config.desktop.hyprland) monitor;
 
-	  exec = ["${lib.getExe pkgs.foot}"];
+          exec = ["${lib.getExe pkgs.foot}"];
 
           decoration = {
             # shadow stuff
@@ -33,7 +33,7 @@ in {
             shadow_offset = "5 5";
           };
           input = {
-            kb_layout = "br";
+            kb_layout = "us";
           };
 
           "$mod" = "ALT";
@@ -41,9 +41,9 @@ in {
             [
               "$mod, Q, killactive,"
               "$mod SHIFT, E, exit"
-              "$mod, E, exec, ${getExe rofi } -show run"
+              "$mod, E, exec, ${getExe pkgs.rofi} -show run"
               #"$mod, F, exec, firefox"
-              "$mod, RETURN, exec, ${getExe kitty}"
+              "$mod, RETURN, exec, ${getExe pkgs.kitty}"
             ]
             ++ (
               # workspaces
