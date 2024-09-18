@@ -8,7 +8,6 @@ in
 {
   imports = [
     ./${hostname}
-    ./core.nix
-    ./core-home.nix
+    ../core
   ];
 }
