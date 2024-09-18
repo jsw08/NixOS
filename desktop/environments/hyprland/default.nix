@@ -4,5 +4,6 @@
     ./waybar.nix
     ./mako.nix
     ./greetd.nix
+    ./rofi.nix
   ];
 }

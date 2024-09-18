@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOption types;
+  inherit (lib) mkOption types getExe getExe';
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
 in {
@@ -25,6 +25,8 @@ in {
         settings = {
           inherit (config.desktop.hyprland) monitor;
 
+	  exec = ["${lib.getExe pkgs.foot}"];
+
           decoration = {
             # shadow stuff
             drop_shadow = true;
@@ -39,9 +41,9 @@ in {
             [
               "$mod, Q, killactive,"
               "$mod SHIFT, E, exit"
-              #"$mod, E, exec, rofi -show run"
+              "$mod, E, exec, ${getExe rofi } -show run"
               #"$mod, F, exec, firefox"
-              #"$mod, RETURN, exec, kitty"
+              "$mod, RETURN, exec, ${getExe kitty}"
             ]
             ++ (
               # workspaces
