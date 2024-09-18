@@ -40,11 +40,40 @@ in {
           general = {
             gaps_in = 5;
             gaps_out = 5;
-            border_size = 1;
+            border_size = 2;
 
             allow_tearing = true;
             resize_on_border = true;
           };
+          group = {
+            groupbar = {
+              font_size = 10;
+              gradients = false;
+            };
+          };
+
+          input = {
+            kb_layout = "us";
+
+            follow_mouse = 1;
+            touchpad.scroll_factor = 0.1;
+          };
+          gestures = {
+            workspace_swipe = true;
+            workspace_swipe_forever = true;
+          };
+          dwindle = {
+            pseudotile = true;
+            preserve_split = true;
+          };
+          misc = {
+            disable_autoreload = true;
+            force_default_wallpaper = 0;
+            animate_mouse_windowdragging = false;
+            vrr = 1;
+          };
+          render.direct_scanout = true;
+          xwayland.force_zero_scaling = true;
 
           decoration = {
             rounding = 10;
@@ -74,40 +103,6 @@ in {
               "workspaces, 1, 2, default, slide"
             ];
           };
-
-          group = {
-            groupbar = {
-              font_size = 10;
-              gradients = false;
-            };
-          };
-
-          input = {
-            kb_layout = "us";
-
-            follow_mouse = 1;
-            touchpad.scroll_factor = 0.1;
-          };
-
-          dwindle = {
-            pseudotile = true;
-            preserve_split = true;
-          };
-
-          misc = {
-            disable_autoreload = true;
-            force_default_wallpaper = 0;
-            animate_mouse_windowdragging = false;
-            vrr = 1;
-          };
-          render.direct_scanout = true;
-
-          # touchpad gestures
-          gestures = {
-            workspace_swipe = true;
-            workspace_swipe_forever = true;
-          };
-          xwayland.force_zero_scaling = true;
 
           # Keybinds
           "$mod" = "ALT";

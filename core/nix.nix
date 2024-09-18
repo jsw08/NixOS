@@ -27,10 +27,17 @@
 
   # You need git for flakes.
   environment.systemPackages = [pkgs.git];
+  programs.nh = {
+    enable = true;
+    clean.enable = true;
+    clean.extraArgs = "--keep-since 4d --keep 3";
+    flake = "/home/${config.core.username}/NixOS";
+  };
 
   system.autoUpgrade = {
     enable = true;
     flake = "github:jsw08/NixOS";
+    operation = "boot";
   };
   system.stateVersion = "24.05";
 }
