@@ -9,7 +9,10 @@
   usr = config.core.username;
   mkForceInstalled = extensions:
     builtins.mapAttrs
-    (name: url: {installation_mode = "force_installed"; "install_url" = url;})
+    (name: url: {
+      installation_mode = "force_installed";
+      "install_url" = url;
+    })
     extensions;
 in {
   options.apps.firefox = lib.mkOption {
@@ -30,7 +33,7 @@ in {
         };
       };
       policies = {
-      BlockAboutConfig = true;
+        BlockAboutConfig = true;
         ExtensionSettings = mkForceInstalled {
           "uBlock0@raymondhill.net" = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           "DontFuckWithPaste@raim.ist" = "https://addons.mozilla.org/firefox/downloads/latest/don-t-fuck-with-paste/latest.xpi";
