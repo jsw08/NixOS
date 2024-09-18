@@ -4,6 +4,7 @@
   lib,
   ...
 }: let
+  inherit (lib) mkIf;
   cfg = config.core.boot;
 in {
   options.core.boot = {
@@ -16,21 +17,21 @@ in {
   };
 
   config.boot =
-    lib.mkIf cfg.enable { # NixOS-wsl support.
+    mkIf cfg.enable { # NixOS-wsl support.
       loader = {
         systemd-boot.enable = true;
         efi.canTouchEfiVariables = true;
       };
       kernelPackages = pkgs.linuxPackages_latest;
       tmp.cleanOnBoot = true;
-    }
-    // lib.optionalAttrs cfg.animation {
-      plymouth.enable = true;
+      
+      # Boot animation
+      plymouth.enable = cfg.animation;
 
       # Silent boot and related.
-      consoleLogLevel = 0;
-      initrd.verbose = false;
-      kernelParams = [
+      consoleLogLevel = mkIf cfg.animation 0;
+      initrd.verbose = cfg.animation;
+      kernelParams = mkIf cfg.animation [
         "quiet"
         "splash"
         "boot.shell_on_fail"
@@ -41,6 +42,6 @@ in {
       ];
 
       # Hide the OS choice for bootloaders. It's still possible to open the bootloader list by pressing any key  It will just not appear on screen unless a key is pressed
-      loader.timeout = 0;
+      loader.timeout = mkIf cfg.animation 0;
     };
 }
