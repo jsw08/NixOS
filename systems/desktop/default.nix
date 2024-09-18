@@ -7,5 +7,5 @@
     bluetooth = true;
   };
 
-  desktop.type = "hyprland";
+  desktop.type = "gnome";
 }
