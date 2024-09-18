@@ -16,6 +16,7 @@ in {
         support32Bit = true;
       };
     };
+    hardware.pulseaudio.enable = false;
     environment.systemPackages = with pkgs; [
       pulsemixer
       playerctl
