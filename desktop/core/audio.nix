@@ -9,7 +9,6 @@ let
 in
 {
   config = lib.mkIf cfg {
-    sound.enable = lib.mkForce false;
     services.pipewire = {
       enable = true;
       audio.enable = true;
