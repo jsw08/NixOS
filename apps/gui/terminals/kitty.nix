@@ -14,7 +14,7 @@ in {
   #   description = "Wether to enable the APP.";
   # };
 
-  config.home-manager.users.${usr} =
-    lib.mkIf cfg {
-    };
+  config.home-manager.users.${usr}.programs.kitty = {
+    enable = cfg;
+  };
 }

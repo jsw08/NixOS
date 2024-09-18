@@ -37,14 +37,14 @@ in {
 
       message = {
         padding = 5;
-        border = mkLiteral " 0px 2px 2px 2px";
+        border = mkLiteral "0px 2px 2px 2px";
       };
 
       inputbar = {
         padding = mkLiteral "11px";
 
         border = mkLiteral "1px";
-        border-radius = mkLiteral " 6px 6px 0px 0px";
+        border-radius = mkLiteral "6px 6px 0px 0px";
       };
 
       "entry, prompt, case-indicator" = {

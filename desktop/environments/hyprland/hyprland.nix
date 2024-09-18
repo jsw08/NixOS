@@ -12,7 +12,7 @@
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
 
-  terminal = pkgs.kitty;
+  terminal = hm.programs.kitty.package;
   rofi = hm.programs.rofi.package;
   firefox = hm.programs.firefox.package;
 in {
