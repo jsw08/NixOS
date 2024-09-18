@@ -20,6 +20,7 @@ in {
     systems = [
       "desktop"
       "wsl"
+      "server"
     ];
   in {
     # Systems
@@ -53,8 +54,8 @@ in {
             nixpkgs.hostPlatform = pkgs.system;
 
             core.username = "user";
-            core.boot.animation = true;
-            desktop.type = "hyprland";
+            core.boot.animation = false;
+            desktop.type = "none";
           }
         ];
     };
