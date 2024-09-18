@@ -40,10 +40,10 @@
     "net.ipv4.tcp_congestion_control" = "bbr";
     "net.core.default_qdisc" = "cake";
   };
-  boot.kernelModules = ["tcp_bbr"];
+  boot.kernelModules = [ "tcp_bbr" ];
   security = {
     sudo.wheelNeedsPassword = false; # Disable sudo password.
-    rtkit.enable = true; # pipewire related or smt idk 
+    rtkit.enable = true; # pipewire related or smt idk
   };
 
   #TODO: Encryption
