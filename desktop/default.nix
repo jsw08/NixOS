@@ -6,6 +6,7 @@ in
   options.desktop.type = lib.mkOption {
     type = lib.types.enum [
       "gnome"
+      "kde"
       "none"
     ];
     default = "none";
@@ -13,9 +14,9 @@ in
     description = "What desktop should be enabled.";
   };
   imports = [
+    ./core
     ./gnome
     ./hyprland
-    ./kde
     ./theme
   ];
 }

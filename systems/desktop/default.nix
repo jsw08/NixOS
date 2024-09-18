@@ -6,5 +6,5 @@
     bluetooth = true;
   };
 
-  desktop.type = "gnome";
+  desktop.type = "kde";
 }
