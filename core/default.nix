@@ -9,5 +9,7 @@
     ./security.nix
     ./user.nix
     ./vm.nix
+    ./ssh.nix
+    ./tailscale.nix
   ];
 }
