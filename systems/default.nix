@@ -11,9 +11,15 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
 
+    inputs.nix-minecraft.nixosModules.minecraft-servers
+    {
+      nixpkgs.overlays = [inputs.nix-minecraft.overlay];
+    }
+
     ../apps
     ../core
     ../desktop
+    ../server
   ];
 in {
   flake = let

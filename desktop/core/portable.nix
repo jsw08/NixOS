@@ -4,7 +4,8 @@
   lib,
   ...
 }: let
-  cfg = config.desktop.portable;
+  desktopCfg = config.desktop.type != "none";
+  cfg = config.desktop.portable && desktopCfg;
 in {
   options.desktop.portable = lib.mkEnableOption "settings related to portability. Usefull for laptops or other battery-powered devices.";
   config = {

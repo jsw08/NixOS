@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  inherit (lib) mkOption types getExe';
+  inherit (lib) mkIf mkOption types getExe';
   opt = lib.optionalString;
   exe = lib.getExe;
   hm = config.home-manager.users.${usr};
@@ -25,14 +25,14 @@ in {
       example: HDMI-A-1, 2560x1080@60, 0x0, 1)
     '';
   };
-  config = {
-    programs.hyprland.enable = cfg;
+  config = mkIf cfg {
+    programs.hyprland.enable = true;
     home-manager.users.${usr} = {
       home.packages = [
         pkgs.wl-clipboard
       ];
       wayland.windowManager.hyprland = {
-        enable = cfg;
+        enable = true;
         settings = {
           inherit (config.desktop.hyprland) monitor;
 

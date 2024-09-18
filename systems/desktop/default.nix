@@ -13,4 +13,6 @@
       "DP-1, 2560x1440@164, 0x0, 1, bitdepth, 10, vrr, 1"
     ];
   };
+
+  server.minecraft = true;
 }
