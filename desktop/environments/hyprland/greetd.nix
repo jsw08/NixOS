@@ -3,7 +3,7 @@
   cmd = "Hyprland";
   greeting = "";
 
-  greeter = "${lib.getExe pkgs.greetd.tuigreet} --user-menu -r -t -g '${greeting} -c ${cmd}";
+  greeter = "${lib.getExe pkgs.greetd.tuigreet} --user-menu -r -t -g '${greeting}' -c ${cmd}";
 in {
   services.greetd = {
     enable = true;
@@ -15,4 +15,4 @@ in {
        };
     };
   };
-};
+}
