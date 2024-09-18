@@ -11,4 +11,6 @@ in
     ./${hostname}
     ../core
   ];
+
+  networking.hostName = hostname;
 }

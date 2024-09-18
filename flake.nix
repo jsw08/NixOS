@@ -9,7 +9,11 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Ricing
     stylix.url = "github:danth/stylix";
+
+    # WSL
+    nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
   };
 
   outputs =
@@ -39,6 +43,13 @@
             hostname = "desktop";
           };
           modules = modules_paths;
+        };
+        wsl = nixpkgs.lib.nixosSystem {
+          specialArgs = {
+            inherit inputs outputs;
+            hostname = "wsl";
+          };
+          modules = modules_paths ++ [ inputs.nixos-wsl.nixosModules.default ];
         };
       };
 
