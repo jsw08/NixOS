@@ -11,5 +11,6 @@
     ./vm.nix
     ./ssh.nix
     ./tailscale.nix
+    ./network.nix
   ];
 }
