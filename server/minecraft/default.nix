@@ -9,7 +9,7 @@
 
   modpack = pkgs.fetchPackwizModpack {
     url = "https://github.com/jsw08/server-modpack/raw/master/pack.toml";
-    packHash = "sha256-LhfCYPSG68zDhP9AwncF17uq/m5G+0JZQwpfHP+qTwk=";
+    packHash = "sha256-UUrmS4tnpUGShGqrRG1mbWFy2OO7Mspqklb+hTnSZ0I=";
   };
 
   mcVersion = modpack.manifest.versions.minecraft;
@@ -32,8 +32,11 @@ in {
         };
 	jvmOpts = "-Xms6144M -Xmx6144M --add-modules=jdk.incubator.vector -XX:+UseG1GC -XX:+ParallelRefProcEnabled -XX:MaxGCPauseMillis=200 -XX:+UnlockExperimentalVMOptions -XX:+DisableExplicitGC -XX:+AlwaysPreTouch -XX:G1HeapWastePercent=5 -XX:G1MixedGCCountTarget=4 -XX:InitiatingHeapOccupancyPercent=15 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:SurvivorRatio=32 -XX:+PerfDisableSharedMem -XX:MaxTenuringThreshold=1 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true -XX:G1NewSizePercent=30 -XX:G1MaxNewSizePercent=40 -XX:G1HeapRegionSize=8M -XX:G1ReservePercent=20";
 
-
+	whitelist = {
+	  jsuwu = "cbd3ea51-2acb-4b8c-b8b7-222f9914816f";
+	};
         serverProperties = {
+	  whitelist = true;
           view-distance = 12;
           difficulty = "hard";
           force-gamemode = true;
