@@ -8,10 +8,10 @@
   };
 
   desktop = {
-    type = "gnome";
-    # hyprland.monitor = [
-    #   "DP-1, 2560x1440@164, 0x0, 1, bitdepth, 10"
-    # ];
+    type = "hyprland";
+    hyprland.monitor = [
+      "DP-1, 2560x1440@164, 0x0, 1, bitdepth, 10"
+    ];
   };
   server.minecraft = true;
 }
