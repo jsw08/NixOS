@@ -19,6 +19,7 @@ in {
   options.server.minecraft = lib.mkEnableOption "minecraft related services, to host an smp.";
   config = lib.mkIf cfg {
     environment.systemPackages = [pkgs.tmux pkgs.packwiz];
+    networking.firewall.allowedUDPPorts = [24454];
     services.minecraft-servers = {
       enable = true;
       eula = true;
