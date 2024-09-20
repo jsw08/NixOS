@@ -73,7 +73,7 @@ in {
             disable_autoreload = true;
             force_default_wallpaper = 0;
             animate_mouse_windowdragging = false;
-            vrr = 1;
+            vrr = 2;
           };
           render.direct_scanout = true;
           xwayland.force_zero_scaling = true;
