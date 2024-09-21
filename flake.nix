@@ -41,6 +41,6 @@
     nixos-wsl.url = "github:nix-community/NixOS-WSL/main";
 
     # Server related inputs
-    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
+    flux.url = "github:IogaMaster/flux";
   };
 }

@@ -11,9 +11,9 @@
     inputs.home-manager.nixosModules.home-manager
     inputs.stylix.nixosModules.stylix
 
-    inputs.nix-minecraft.nixosModules.minecraft-servers
+    inputs.flux.nixosModules.default
     {
-      nixpkgs.overlays = [inputs.nix-minecraft.overlay];
+      nixpkgs.overlays = [inputs.flux.overlays.default];
     }
 
     ../apps
