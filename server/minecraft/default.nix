@@ -9,7 +9,7 @@
 
   modpack = pkgs.fetchPackwizModpack {
     url = "https://github.com/jsw08/server-modpack/raw/master/pack.toml";
-    packHash = "sha256-UUrmS4tnpUGShGqrRG1mbWFy2OO7Mspqklb+hTnSZ0I=";
+    packHash = "sha256-4yh3JdCvMMFUSMsuSvOeES2La4NkypAW0ypsdG9kEpY="; 
   };
 
   mcVersion = modpack.manifest.versions.minecraft;
@@ -47,6 +47,7 @@ in {
         symlinks = {
           "allowed_symlinks.txt" = pkgs.writeText "allowed_symlinks.txt" "/nix/store";
           "mods" = "${modpack}/mods";
+          "config" = "${modpack}/config";
         };
       };
     };
