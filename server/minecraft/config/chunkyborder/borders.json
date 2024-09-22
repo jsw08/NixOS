@@ -1,0 +1,29 @@
+{
+  "minecraft:overworld": {
+    "world": "minecraft:overworld",
+    "centerX": 50.0,
+    "centerZ": 50.0,
+    "radiusX": 10000.0,
+    "radiusZ": 10000.0,
+    "shape": "square",
+    "wrap": "none"
+  },
+  "minecraft:the_nether": {
+    "world": "minecraft:the_nether",
+    "centerX": 50.0,
+    "centerZ": 50.0,
+    "radiusX": 4000.0,
+    "radiusZ": 4000.0,
+    "shape": "square",
+    "wrap": "none"
+  },
+  "minecraft:the_end": {
+    "world": "minecraft:the_end",
+    "centerX": 0.0,
+    "centerZ": 0.0,
+    "radiusX": 10000.0,
+    "radiusZ": 10000.0,
+    "shape": "square",
+    "wrap": "none"
+  }
+}
