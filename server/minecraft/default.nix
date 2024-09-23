@@ -60,7 +60,7 @@ in {
 
           ln -s ${./mods} ./mods
 	  false | cp -ir ${./config}/. ./config
-	  false | cp -ir ${./root}/. .
+	  cp -r ${./root}/. .
 
 	  chmod -R ug+rwx ~ 
         '');
