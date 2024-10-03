@@ -13,5 +13,9 @@
       "DP-1, 2560x1440@164, 0x0, 1, bitdepth, 10"
     ];
   };
-  server.minecraft = true;
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
+	boot.kernelModules = [
+	  "v4l2loopback"
+	];
 }
