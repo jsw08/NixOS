@@ -1,5 +1,9 @@
-{config, pkgs, ...}: {
-  imports = [./hardware-configuration.nix];
+{
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [./hardware-configuration.nix ./envision.nix];
 
   core = {
     boot.animation = true;
@@ -14,8 +18,8 @@
     ];
   };
 
-  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];
-	boot.kernelModules = [
-	  "v4l2loopback"
-	];
+  boot.extraModulePackages = with config.boot.kernelPackages; [v4l2loopback];
+  boot.kernelModules = [
+    "v4l2loopback"
+  ];
 }
