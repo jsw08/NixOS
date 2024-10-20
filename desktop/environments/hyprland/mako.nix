@@ -1,9 +1,12 @@
-{config, ...}: let
+{config, lib, ...}: let
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
 in {
-  home-manager.users.${usr}.services.mako = {
-    enable = cfg;
-    defaultTimeout = 5000;
+  home-manager.users.${usr} =  lib.mkIf cfg {
+    home.packages = [pkgs.libnotify];
+    services.mako = {
+      enable = true;
+      defaultTimeout = 5000;
+    };
   };
 }
