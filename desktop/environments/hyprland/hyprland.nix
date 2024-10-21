@@ -15,16 +15,9 @@
   terminal = hm.programs.kitty.package;
   rofi = hm.programs.rofi.package;
   firefox = hm.programs.firefox.package;
+  hyprctl = "${hm.wayland.windowManager.hyprland.package}/bin/hyprctl";
+  inherit (config.lib.stylix) colors;
 in {
-  options.desktop.hyprland.monitor = mkOption {
-    type = types.listOf types.str;
-    default = [];
-    description = ''
-      monitor configuration for setup
-      (monitor,resolution@hertz,position,scale
-      example: HDMI-A-1, 2560x1080@60, 0x0, 1)
-    '';
-  };
   config = mkIf cfg {
     programs.hyprland.enable = true;
     home-manager.users.${usr} = {
@@ -34,7 +27,6 @@ in {
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-          inherit (config.desktop.hyprland) monitor;
 
           # Autolaunch
           #exec = ["${lib.getExe pkgs.foot}"];
@@ -87,7 +79,6 @@ in {
               new_optimizations = true;
               ignore_opacity = true;
               xray = true;
-              blurls = "waybar";
             };
             active_opacity = 0.85;
             inactive_opacity = 0.6;
@@ -123,10 +114,16 @@ in {
               "$mod, D, exec, ${exe rofi} -show drun"
               "$mod, RETURN, exec, ${exe terminal}"
               "$mod SHIFT, RETURN, exec, ${exe firefox}"
+	      "$mod, ESCAPE, exec, ${exe hm.programs.hyprlock.package}"
 
               "$mod, a, exec, ${exe terminal} ${exe pkgs.pulsemixer}"
               "$mod, n, exec, ${exe terminal} ${pkgs.networkmanager}/bin/nmtui"
               (opt config.core.bluetooth "$mod, b, exec, ${exe terminal} ${exe pkgs.bluetuith}")
+
+	      # Bar alternative
+	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base06})\" \" $(date +'%d/%m/%Y - %H:%M:%S')\""
+	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"    $(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2)\""
+	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"󰁹 batt\""
 
               # Movement binds
               "$mod, G, togglegroup"

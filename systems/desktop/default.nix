@@ -2,7 +2,9 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  usr = config.core.username;
+in {
   imports = [./hardware-configuration.nix ./envision.nix];
 
   core = {
@@ -11,10 +13,15 @@
     bluetooth = true;
   };
 
-  desktop = {
-    type = "gnome";
-    hyprland.monitor = [
+  desktop.type = "hyprland";
+  home-manager.users.${usr}.wayland.windowManager.hyprland.settings = {
+    monitor = [
       "DP-1, 2560x1440@164, 0x0, 1, bitdepth, 10"
+      "HDMI-A-1, 1920x1080@60, 2560x180, 1, bitdepth, 10"
+    ];
+    workspace = [
+      "r[1-5], monitor:DP-1"
+      "r[6-10], monitor:HDMI-A-1"
     ];
   };
 

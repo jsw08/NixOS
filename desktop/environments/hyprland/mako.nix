@@ -1,4 +1,4 @@
-{config, lib, ...}: let
+{config, lib, pkgs, ...}: let
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
 in {

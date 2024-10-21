@@ -1,8 +1,9 @@
 {
   imports = [
-    ./hyprland.nix
-    ./mako.nix
     ./greetd.nix
+    ./hyprland.nix
+    ./hyprlock.nix
+    ./mako.nix
     ./rofi.nix
   ];
 }
