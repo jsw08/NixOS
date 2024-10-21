@@ -51,34 +51,34 @@ in {
         PrivateUsers = true;
 
         ExecStartPre = lib.getExe (pkgs.writeShellScriptBin "minecraft-server-pre-start" ''
-	  chmod -R ug+rwx ~ 
-	  
-          if [ -e "./mods" ]; then
-            rm -r ./mods
-          fi
-          chmod -R u+rw ./config
+          chmod -R ug+rwx ~
 
-          ln -s ${./mods} ./mods
-	  false | cp -ir ${./config}/. ./config
-	  cp -r ${./root}/. .
+                 if [ -e "./mods" ]; then
+                   rm -r ./mods
+                 fi
+                 chmod -R u+rw ./config
 
-	  chmod -R ug+rwx ~ 
+                 ln -s ${./mods} ./mods
+          false | cp -ir ${./config}/. ./config
+          cp -r ${./root}/. .
+
+          chmod -R ug+rwx ~
         '');
         ExecStart = "${screen} -DmS minecraft ${pkgs.graalvm-ce}/bin/java ${jvmArgs} -jar ${fabric} nogui";
         ExecStop = lib.getExe (pkgs.writeShellScriptBin "minecraft-server-stop" ''
-	  function server_running {
-	      ${screen} -ls minecraft
-	  }
+          function server_running {
+              ${screen} -ls minecraft
+          }
 
-          if ! server_running; then
-              exit 0
-          fi
+                 if ! server_running; then
+                     exit 0
+                 fi
 
-          ${screen} -S minecraft -X stuff "stop^M" 
+                 ${screen} -S minecraft -X stuff "stop^M"
 
-          while server_running; do
-              sleep 0.25
-          done
+                 while server_running; do
+                     sleep 0.25
+                 done
         '');
       };
       wantedBy = ["multi-user.target"];

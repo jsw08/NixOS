@@ -27,7 +27,6 @@ in {
       wayland.windowManager.hyprland = {
         enable = true;
         settings = {
-
           # Autolaunch
           #exec = ["${lib.getExe pkgs.foot}"];
 
@@ -114,16 +113,16 @@ in {
               "$mod, D, exec, ${exe rofi} -show drun"
               "$mod, RETURN, exec, ${exe terminal}"
               "$mod SHIFT, RETURN, exec, ${exe firefox}"
-	      "$mod, ESCAPE, exec, ${exe hm.programs.hyprlock.package}"
+              "$mod, ESCAPE, exec, ${exe hm.programs.hyprlock.package}"
 
               "$mod, a, exec, ${exe terminal} ${exe pkgs.pulsemixer}"
               "$mod, n, exec, ${exe terminal} ${pkgs.networkmanager}/bin/nmtui"
               (opt config.core.bluetooth "$mod, b, exec, ${exe terminal} ${exe pkgs.bluetuith}")
 
-	      # Bar alternative
-	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base06})\" \" $(date +'%d/%m/%Y - %H:%M:%S')\""
-	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"    $(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2)\""
-	      "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"󰁹 batt\""
+              # Bar alternative
+              "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base06})\" \" $(date +'%d/%m/%Y - %H:%M:%S')\""
+              "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"    $(${pkgs.wireplumber}/bin/wpctl get-volume @DEFAULT_AUDIO_SINK@ | cut -d ' ' -f 2)\""
+              "$mod, z, exec, ${hyprctl} notify -1 4000 \"rgb(${colors.base08})\" \"󰁹 batt\""
 
               # Movement binds
               "$mod, G, togglegroup"
