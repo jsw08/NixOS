@@ -5,6 +5,7 @@
   ...
 }: let
   inherit (lib) mkIf;
+  inherit (config.lib.stylix.colors) base00 base0D base05 base06 base0F;
   usr = config.core.username;
   cfg = config.desktop.type == "hyprland";
 in {
@@ -25,24 +26,24 @@ in {
       input-field = {
         monitor = "";
         size = "200, 50";
-        outline_thickness = 3;
+        outline_thickness = 1.5;
         dots_size = 0.33;
         dots_spacing = 0.15;
         dots_center = false;
         dots_rounding = -1;
         dots_fade_time = 200;
         dots_text_format = "";
-        outer_color = "rgb(151515)";
-        inner_color = "rgb(200, 200, 200)";
-        font_color = "rgb(10, 10, 10)";
+        outer_color = "rgb(${base0D})";
+        inner_color = "rgb(${base00})";
+        font_color = "rgb(${base05})";
         font_family = "Noto Sans";
         fade_on_empty = true;
         fade_timeout = 1000;
         placeholder_text = "<i>Input Password...</i>";
         hide_input = false;
-        rounding = -1;
-        check_color = "rgb(204, 136, 34)";
-        fail_color = "rgb(204, 34, 34)";
+        rounding = 10;
+        check_color = "rgb(${base06})";
+        fail_color = "rgb(${base0F})";
         fail_text = "<i>$FAIL <b>($ATTEMPTS)</b></i>";
         fail_timeout = 2000;
         fail_transition = 300;
