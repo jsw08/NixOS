@@ -5,7 +5,7 @@
 }: let
   usr = config.core.username;
 in {
-  imports = [./hardware-configuration.nix ./wivrn.nix];
+  imports = [./hardware-configuration.nix];
 
   core = {
     boot.animation = true;
@@ -33,5 +33,10 @@ in {
   services.printing = {
     enable = true;
     drivers = [pkgs.epson-escpr2];
-  }; 
+  };
+
+  apps.games = {
+    enabled = true;
+    # vr = true;
+  };
 }

@@ -1,0 +1,26 @@
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}: let
+  games = config.apps.games;
+  cfg = games.enabled && games.vr && config.desktop.type != "none";
+in {
+  options.apps.games.vr = lib.mkEnableOption "support for wireless vr via wivrn.";
+  # nixpkgs.overlays = [inputs.nixpkgs-xr.overlays.default];
+  # nix.settings = {
+  #  substituters = [ "https://nix-community.cachix.org" ];
+  #  trusted-public-keys = [ "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=" ];
+  # };
+
+  config = {
+    services.wivrn = {
+      enable = true;
+      openFirewall = true;
+      package = inputs.wivrn-20.legacyPackages.${pkgs.system}.wivrn;
+      extraPackages = [pkgs.wlx-overlay-s];
+    };
+  };
+}

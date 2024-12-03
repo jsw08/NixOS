@@ -83,9 +83,9 @@ in {
             inactive_opacity = 0.6;
             fullscreen_opacity = 0.95;
 
-            drop_shadow = true;
-            shadow_range = 30;
-            shadow_render_power = 3;
+            # drop_shadow = true;
+            # shadow_range = 30;
+            # shadow_render_power = 3;
           };
           animations = {
             enabled = true;

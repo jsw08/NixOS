@@ -1,6 +1,5 @@
 {
   imports = [
-    ./gui
-    ./cli
+    ./nvim.nix
   ];
 }

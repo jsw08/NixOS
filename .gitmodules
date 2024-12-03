@@ -1,0 +1,3 @@
+[submodule "apps/cli/nvim/nvim"]
+	path = apps/cli/nvim/nvim
+	url = https://github.com/jsw08/nvim

@@ -2,5 +2,6 @@
   imports = [
     ./browsers
     ./terminals
+    ./game
   ];
 }
